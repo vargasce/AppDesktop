@@ -1,0 +1,9 @@
+.color-bottom-footer{
+    background-color : #212529;
+    color :white;
+}
+
+.color-top-footer{
+    background-color :darkgrey;
+    color : white !important;
+}

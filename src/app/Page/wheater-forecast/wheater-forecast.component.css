@@ -1,0 +1,14 @@
+.cards{
+    margin-bottom : 20px;
+}
+
+.card-body{
+    min-height : 300px;
+    max-height: 400px;
+    overflow-y : auto;
+}
+
+.card-header{
+    background-color : #343a40;
+    color: white;
+}
