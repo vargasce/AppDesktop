@@ -8,13 +8,13 @@ import WeatherResponseApiDTO from "DTO/WeatherDTO/weatherResponseApi.dto";
 class WeatherService {
 
     constructor( 
-        private readonly _weatherResository: WeatherRepository 
+        private readonly _weatherRepository: WeatherRepository 
     ){
 
     }
 
     async getWeatherTime():Promise<WeatherResponseApiDTO>{
-        let result = await this._weatherResository.getStatusTime();
+        let result = await this._weatherRepository.getStatusTime();
         return Promise.resolve( result );
     }
 

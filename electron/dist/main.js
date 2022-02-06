@@ -5,10 +5,11 @@ const electron_1 = require("electron");
 const path = require("path");
 const url = require("url");
 const preload_1 = require("./preload");
-//https://home.openweathermap.org/api_keys
-//https://openweathermap.org/current
 let preload = new preload_1.Preload();
 let win;
+process.env.SOCKET_PORT = "18488";
+//https://home.openweathermap.org/api_keys
+//https://openweathermap.org/current
 function createWindow() {
     win = new electron_1.BrowserWindow({
         width: 1600,
@@ -33,6 +34,7 @@ function createWindow() {
 }
 //RUN CONTROLLER
 preload.InitEvents();
+preload.InitSocket();
 // Para ver el estado de la app
 electron_1.app.on('ready', createWindow);
 electron_1.app.on('activate', () => {

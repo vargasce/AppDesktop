@@ -3,12 +3,15 @@ import { app, BrowserWindow, Menu } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { Preload } from './preload';
-//https://home.openweathermap.org/api_keys
-//https://openweathermap.org/current
+
 let preload = new Preload();
 let win: BrowserWindow;
+process.env.SOCKET_PORT = "18488";
 
-function createWindow() {
+//https://home.openweathermap.org/api_keys
+//https://openweathermap.org/current
+
+function createWindow():void {
 
     win = new BrowserWindow({ 
         width: 1600, 
@@ -39,7 +42,7 @@ function createWindow() {
 
 //RUN CONTROLLER
 preload.InitEvents();
-
+preload.InitSocket();
 // Para ver el estado de la app
 app.on('ready', createWindow)
 

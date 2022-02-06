@@ -21,12 +21,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
 const weather_dao_1 = require("../DAO/weather.dao");
 let WeatherService = class WeatherService {
-    constructor(_weatherResository) {
-        this._weatherResository = _weatherResository;
+    constructor(_weatherRepository) {
+        this._weatherRepository = _weatherRepository;
     }
     getWeatherTime() {
         return __awaiter(this, void 0, void 0, function* () {
-            let result = yield this._weatherResository.getStatusTime();
+            let result = yield this._weatherRepository.getStatusTime();
             return Promise.resolve(result);
         });
     }

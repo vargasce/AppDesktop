@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import CoordenadasDTO from 'electron/DTO/WeatherDTO/coordenadas.dto';
 import WeatherResponseApiDTO from 'electron/DTO/WeatherDTO/weatherResponseApi.dto';
 import { WeatherForecastService } from './Service/weather-forecast.service';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-wheater-forecast',
@@ -12,10 +13,13 @@ import { WeatherForecastService } from './Service/weather-forecast.service';
 export class WeatherForecastComponent implements OnInit {
 
   public data!: WeatherResponseApiDTO; 
+  private socket: io.Socket;
 
   constructor(
     private _weatherService : WeatherForecastService
-  ) { }
+  ) { 
+    this.socket = io.connect(`http://localhost:${18488}`);
+  }
 
   ngOnInit(): void {
   }
@@ -34,6 +38,10 @@ export class WeatherForecastComponent implements OnInit {
       console.log(error);
       return;
     }
+
+    this.socket.on("test", ( msg : string )=>{
+      console.log(msg);
+    })
 
   }
 
