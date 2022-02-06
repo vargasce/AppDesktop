@@ -41,6 +41,7 @@ export class WeatherForecastComponent implements OnInit {
 
     this.socket.on("test", ( msg : string )=>{
       console.log(msg);
+      console.log('Prueba');
     })
 
   }
