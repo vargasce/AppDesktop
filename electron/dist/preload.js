@@ -13,8 +13,8 @@ class Preload {
     InitEvents() {
         this._weatherController.InitController();
     }
-    InitSocket() {
-        this._ServerIO.InitServer();
+    InitSocket(win) {
+        this._ServerIO.InitServer(win);
     }
 }
 exports.Preload = Preload;

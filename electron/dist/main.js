@@ -31,10 +31,10 @@ function createWindow() {
     win.on('closed', () => {
         win.close;
     });
+    preload.InitSocket(win);
 }
 //RUN CONTROLLER
 preload.InitEvents();
-preload.InitSocket();
 // Para ver el estado de la app
 electron_1.app.on('ready', createWindow);
 electron_1.app.on('activate', () => {

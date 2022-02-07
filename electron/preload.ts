@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import Container from 'typedi';
 import WeatherController from './Controller/weather.controller';
 import ServerIO from './Socket/socket.server';
+import { BrowserWindow } from 'electron';
 
 export class Preload{
 
@@ -19,8 +20,8 @@ export class Preload{
         this._weatherController.InitController();
     }
 
-    public InitSocket():void{
-        this._ServerIO.InitServer();
+    public InitSocket( win : BrowserWindow ):void{
+        this._ServerIO.InitServer( win );
     }
 
 }

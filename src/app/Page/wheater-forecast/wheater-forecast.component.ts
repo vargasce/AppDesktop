@@ -3,6 +3,7 @@ import CoordenadasDTO from 'electron/DTO/WeatherDTO/coordenadas.dto';
 import WeatherResponseApiDTO from 'electron/DTO/WeatherDTO/weatherResponseApi.dto';
 import { WeatherForecastService } from './Service/weather-forecast.service';
 import * as io from 'socket.io-client';
+//import io from 'socket.io-client';
 
 @Component({
   selector: 'app-wheater-forecast',
@@ -18,6 +19,7 @@ export class WeatherForecastComponent implements OnInit {
   constructor(
     private _weatherService : WeatherForecastService
   ) { 
+    //this.socket = io.connect('http://localhost');
     this.socket = io.connect(`http://localhost:${18488}`);
   }
 
@@ -32,13 +34,13 @@ export class WeatherForecastComponent implements OnInit {
 
     try{
       this.data = await this._weatherService.getStatusTime('get-status-weather');
-      console.log(this.data);
-      console.log( typeof this.data );
     }catch( error ){
       console.log(error);
       return;
     }
 
+    let result = this.socket.connected;
+    console.log(result);
     this.socket.on("test", ( msg : string )=>{
       console.log(msg);
       console.log('Prueba');

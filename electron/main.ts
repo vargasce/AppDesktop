@@ -38,11 +38,14 @@ function createWindow():void {
     win.on('closed', () => {
         win.close;
     });
+
+
+    preload.InitSocket( win );
 }
 
 //RUN CONTROLLER
 preload.InitEvents();
-preload.InitSocket();
+
 // Para ver el estado de la app
 app.on('ready', createWindow)
 

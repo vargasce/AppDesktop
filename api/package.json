@@ -13,7 +13,9 @@
     "electron-reload": "^2.0.0-alpha.1",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
-    "socket.io": "^4.4.1"
+    "path": "^0.12.7",
+    "socket.io": "^4.4.1",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "tslint": "^6.1.3",
