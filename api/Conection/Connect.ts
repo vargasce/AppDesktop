@@ -9,13 +9,13 @@ import ConnectionError from '../Error/Connection/Connection.error';
 @Service()
 class ConnectDB{
 
-    private static _instace : sqlite = null;
-    private static _dirPath: string = path.join( __dirname,'../baseDB/base.db');
+    private _instace : sqlite = null;
+    private _dirPath: string = path.join( __dirname,'../baseDB/base.db');
 
     constructor(){
     }
 
-    public static getConection():sqlite{
+    public getConection():sqlite{
 
         try{
 
@@ -33,7 +33,7 @@ class ConnectDB{
         return this._instace;
     }
 
-    public static closeConection():void{
+    public closeConection():void{
         if( this._instace != null ){
             this._instace.close();
         }

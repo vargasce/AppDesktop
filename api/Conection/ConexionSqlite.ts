@@ -2,7 +2,7 @@
 
 import sqlite from 'sqlite3';
 import ConectDB  from './Connect';
-import Container from 'typedi';
+import { Container } from 'typedi';
 
 class ConnectionSqlite{
 
@@ -20,7 +20,7 @@ class ConnectionSqlite{
     }
 
     private static getConnection():sqlite{
-        
+        return this._con.getConection();
     }
 
 }
