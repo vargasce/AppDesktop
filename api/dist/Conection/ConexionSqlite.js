@@ -1,7 +1,6 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 const Connect_1 = require("./Connect");
-const typedi_1 = require("typedi");
 class ConnectionSqlite {
     constructor() {
     }
@@ -16,6 +15,6 @@ class ConnectionSqlite {
     }
 }
 ConnectionSqlite._instace = null;
-ConnectionSqlite._con = typedi_1.Container.get(Connect_1.default);
+ConnectionSqlite._con = new Connect_1.default();
 exports.default = ConnectionSqlite;
 //# sourceMappingURL=ConexionSqlite.js.map
