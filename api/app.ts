@@ -13,6 +13,7 @@ app.use( multiparty() );
 app.use( require('express-useragent').express() );
 
 //CONFIGURACION CORS
+console.log('[*]CONFIGURACION CORS');
 app.use( ( req, res, next ) =>{
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -22,8 +23,10 @@ app.use( ( req, res, next ) =>{
 });
 
 //CONFIGURACION MIDDLEWARE
+console.log('[*]CONFIGURACION MIDDLEWARE');
 
 //CONFIGURACION ROUTES
+console.log('[*]CONFIGURACION ROUTES');
 app.use('/api', routes );
 
 
