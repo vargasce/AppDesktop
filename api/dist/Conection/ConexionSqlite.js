@@ -1,6 +1,9 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 const Connect_1 = require("./Connect");
+/** SINGLETON PATTERNS
+ * Utiliza la clase Connect.ts y retorna una intacna de la conexion.
+ */
 class ConnectionSqlite {
     constructor() {
     }

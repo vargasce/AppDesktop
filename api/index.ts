@@ -1,20 +1,10 @@
+'use strict'
+
 const express = require("express");
-const app = express();
+const app = require("app");
+const host = 'http://localhost';
 const port = 3000;
 
-// Send Notification API
-app.post('/send-notification', (req : any, res : any ) => {
-    const notify = {data: req.body};
-    socket.emit('notification', notify); // Updates Live Notification
-    res.send(notify);
-});
-
 const server = app.listen(port, () => {
-  console.log(`Server connection on  http://127.0.0.1:${port}`);  // Server Connnected
-});
-// Socket Layer over Http Server
-const socket = require('socket.io')(server);
-// On every Client Connection
-socket.on('connection', socket => {
-    console.log('Socket: client connected');
+  console.log(`Server connection on  ${host}:${port}`);
 });

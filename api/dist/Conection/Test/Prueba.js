@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const ConexionSqlite_1 = require("./ConexionSqlite");
-//import { Container, Service } from 'typedi';
-//let s = Container.get(ConnectionSqlite);
+/** PRUEBA TEST DATA BASE
+ * @Observations => posicionarse dis/Conection/Test
+ *                  ejecutar -> node Prueba.js
+ */
+const ConexionSqlite_1 = require("../ConexionSqlite");
 let d = ConexionSqlite_1.default.instace;
 console.log(d);
 d.all('SELECT * FROM Usuario ;', (error, result) => {

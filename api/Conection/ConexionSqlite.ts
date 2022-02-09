@@ -1,6 +1,9 @@
 'use strict'
-
 import ConectDB  from './Connect';
+
+/** SINGLETON PATTERNS
+ * Utiliza la clase Connect.ts y retorna una intacna de la conexion.
+ */
 class ConnectionSqlite{
 
     private static _instace : any = null;
