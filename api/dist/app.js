@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const bodyParser = require("body-parser");
 const multiparty = require("connect-multiparty");
+const Routes_1 = require("./Routes/Routes");
 const express = require('express');
-const routes = require('./Routes/routes');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -22,6 +22,6 @@ app.use((req, res, next) => {
 console.log('[*]CONFIGURACION MIDDLEWARE');
 //CONFIGURACION ROUTES
 console.log('[*]CONFIGURACION ROUTES');
-app.use('/api', routes);
+app.use('/api', Routes_1.default);
 module.exports = app;
 //# sourceMappingURL=app.js.map

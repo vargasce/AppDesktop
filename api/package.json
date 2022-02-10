@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "start": "node ."
+    "start": "nodemon index.js"
   },
   "author": "Cristian Vargas",
   "license": "ISC",

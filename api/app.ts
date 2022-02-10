@@ -2,9 +2,9 @@
 
 import * as bodyParser from 'body-parser';
 import * as multiparty from 'connect-multiparty';
+import router from './Routes/Routes';
 
 const express = require('express');
-const routes = require('./Routes/routes');
 const app = express();
 
 app.use( bodyParser.urlencoded({ extended : false }));
@@ -27,7 +27,7 @@ console.log('[*]CONFIGURACION MIDDLEWARE');
 
 //CONFIGURACION ROUTES
 console.log('[*]CONFIGURACION ROUTES');
-app.use('/api', routes );
+app.use('/api', router );
 
 
 module.exports = app;
