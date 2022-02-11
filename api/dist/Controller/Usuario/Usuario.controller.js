@@ -9,13 +9,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
 const typedi_1 = require("typedi");
-const Usuario_service_1 = require("Services/Usuario/Usuario.service");
-const userService = typedi_1.Container.get(Usuario_service_1.default);
+const Usuario_service_1 = require("../../Services/Usuario/Usuario.service");
+class UsuarioController {
+    constructor() {
+        this._userService = typedi_1.default.get(Usuario_service_1.default);
+    }
+    AddUser(data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let result = yield this._userService.AddUser(data);
+                return Promise.resolve(result);
+            }
+            catch (_error) {
+                throw _error;
+            }
+        });
+    }
+}
+const userController = new UsuarioController();
 const NewUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let data = req.body.data;
-    let result = yield userService.AddUser(data);
-    return res.status(200).send(result);
+    let data = req.body;
+    let result = yield userController.AddUser(data);
+    return res.status(200).send(true);
 });
 exports.default = { NewUser };
 //# sourceMappingURL=Usuario.controller.js.map

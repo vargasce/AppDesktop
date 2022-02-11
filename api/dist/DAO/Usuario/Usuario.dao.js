@@ -47,6 +47,7 @@ UsuarioDAO = __decorate([
 ], UsuarioDAO);
 exports.default = UsuarioDAO;
 const createSqlStringAddUser = (data) => {
+    console.log(data);
     let sql = ` INSERT INTO Usuario ( nombre, apellido, usuario, pass, fecha_alta, activo, email, numero )
                 VALUES( '${data.nombre}',
                         '${data.apellido}',

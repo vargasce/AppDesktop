@@ -5,6 +5,6 @@ import * as express from 'express';
 import Usuario from '../../Controller/Usuario/Usuario.controller';
 
 const router = express.Router();
-router.get('/newUser', Usuario.NewUser );
+router.post('/newUser', Usuario.NewUser );
 
 export default router;
