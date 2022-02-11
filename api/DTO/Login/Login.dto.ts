@@ -5,7 +5,7 @@ import loginControler from "Controller/Login/login.controler"
 
 type Login = {
     usuario : string;
-    contrasena : string;
+    pass : string;
 }
 
 export default Login;

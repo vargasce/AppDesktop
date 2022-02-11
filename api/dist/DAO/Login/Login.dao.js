@@ -10,35 +10,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const ConexionSqlite_1 = require("../../Conection/ConexionSqlite");
+const Auth_awt_1 = require("../../Auth/Auth.awt");
 const typedi_1 = require("typedi");
+const Usuario_error_1 = require("../../Error/Usuario/Usuario.error");
 const md5 = require("md5");
 let LoginDao = class LoginDao {
-    constructor() {
+    constructor(_authjwt) {
+        this._authjwt = _authjwt;
         this._conection = null;
         this._conection = ConexionSqlite_1.default.instace;
     }
     SignIn(data) {
         return new Promise((resolve, reject) => {
             try {
-                this._conection.all(`SELECT * Usuario WHERE usuario= ${data.usuario}, pass= ${md5(data.contrasena)}`, (error, result) => {
+                this._conection.all(`SELECT * Usuario WHERE usuario= ${data.usuario}, pass= ${md5(data.pass)}`, (error, result) => {
                     if (!error) {
-                        console.log('login succes');
-                        resolve(true);
+                        if (result.length > 0) {
+                            return this._authjwt.CreatedToken(result);
+                        }
+                        else {
+                            return null;
+                        }
                     }
                     else {
-                        reject(false);
+                        reject(error);
                     }
                 });
             }
             catch (_error) {
-                throw _error;
+                throw new Usuario_error_1.default('Error Login', `Error SignIn => ${_error}`);
             }
         });
     }
 };
 LoginDao = __decorate([
     (0, typedi_1.Service)(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [Auth_awt_1.default])
 ], LoginDao);
 exports.default = LoginDao;
 //# sourceMappingURL=Login.dao.js.map

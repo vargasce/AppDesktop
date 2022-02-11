@@ -37,7 +37,7 @@ let UsuarioService = class UsuarioService {
                 return result;
             }
             catch (_error) {
-                throw new Usuario_error_1.default('Error Service', `Error Add usuario : ${_error}`);
+                throw new Usuario_error_1.default('Error Service', `Error Add usuario => ${_error}`);
             }
         });
     }

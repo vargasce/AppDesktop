@@ -30,9 +30,14 @@ class UsuarioController {
 }
 const userController = new UsuarioController();
 const NewUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let data = req.body;
-    let result = yield userController.AddUser(data);
-    return res.status(200).send(true);
+    try {
+        let data = req.body;
+        let result = yield userController.AddUser(data);
+        return res.status(200).send(result);
+    }
+    catch (_error) {
+        return res.status(500).send({ 'error': `Error New User => ${_error}` });
+    }
 });
 exports.default = { NewUser };
 //# sourceMappingURL=Usuario.controller.js.map

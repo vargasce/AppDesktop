@@ -1,12 +1,14 @@
 import ConnectionSqlite from '../../Conection/ConexionSqlite';
-import { Service } from 'typedi';
-import Usuario from '../../DTO/Usuario/Usuario.dto';
+import { Service }      from 'typedi';
+import Usuario          from '../../DTO/Usuario/Usuario.dto';
+import UsuarioError     from '../../Error/Usuario/Usuario.error';
 import * as md5 from 'md5';
 
 @Service()
 class UsuarioDAO{
 
     private _conection: any = null;
+
     constructor(){
         this._conection = ConnectionSqlite.instace;
     }
@@ -16,20 +18,43 @@ class UsuarioDAO{
      * @param { UsuarioDTO } data => datos del usuario.
      * @returns { Primise<boolean> } => TRUE or False.
      */
-    public AddUser ( data: Usuario ):Promise<any>{
+    public AddUser ( data: Usuario ):Promise<boolean>{
         return new Promise( (resolve, reject) =>{
 
             try{
                 this._conection.all( createSqlStringAddUser( data ), ( error: any, result: any) =>{
                     if( !error ){
-                        console.log('Add User Succes!! ');
                         resolve(true);
                     }else{
-                        reject(false);
+                        reject(error);
                     }
                 });
             }catch( _error ){
-                throw _error;
+                throw new UsuarioError('Error DAO', `Insert error => ${_error}`);
+            }
+
+        });
+    }
+
+    /** GET USER
+     * @Observations => Obtener usuario a la base.
+     * @param { number } id => Identificador del usuario.
+     * @returns { Primise<UsuarioDTO> } => TRUE or False.
+     */
+    public GetUser ( id: number ):Promise<Usuario>{
+        return new Promise( (resolve, reject) =>{
+
+            try{
+                this._conection.all(`SELECT * FROM Usuario WHERE id = ${id}`, ( error: any, result: any ) =>{
+                    if( !error ){
+                        let res : Usuario = result;
+                        return res;
+                    }else{
+                        reject(error);
+                    }
+                });
+            }catch( _error ){
+                throw new UsuarioError('Error DAO', `GET User error => ${_error}`);               
             }
 
         });

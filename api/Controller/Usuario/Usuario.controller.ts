@@ -29,9 +29,15 @@ class UsuarioController{
 const userController = new UsuarioController();
 
 const NewUser = async ( req: Request, res: Response, next: NextFunction ) =>{
-    let data: UsuarioDTO = req.body;
-    let result = await userController.AddUser( data );
-    return res.status(200).send(true);
+
+    try{
+        let data: UsuarioDTO = req.body;
+        let result = await userController.AddUser( data );
+        return res.status(200).send(result);
+    }catch( _error ){
+        return res.status(500).send({'error': `Error New User => ${_error}`});       
+    }
+
 }
 
 

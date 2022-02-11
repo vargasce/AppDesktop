@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const ConexionSqlite_1 = require("../../Conection/ConexionSqlite");
 const typedi_1 = require("typedi");
+const Usuario_error_1 = require("../../Error/Usuario/Usuario.error");
 const md5 = require("md5");
 let UsuarioDAO = class UsuarioDAO {
     constructor() {
@@ -27,16 +28,38 @@ let UsuarioDAO = class UsuarioDAO {
             try {
                 this._conection.all(createSqlStringAddUser(data), (error, result) => {
                     if (!error) {
-                        console.log('Add User Succes!! ');
                         resolve(true);
                     }
                     else {
-                        reject(false);
+                        reject(error);
                     }
                 });
             }
             catch (_error) {
-                throw _error;
+                throw new Usuario_error_1.default('Error DAO', `Insert error => ${_error}`);
+            }
+        });
+    }
+    /** GET USER
+     * @Observations => Obtener usuario a la base.
+     * @param { number } id => Identificador del usuario.
+     * @returns { Primise<UsuarioDTO> } => TRUE or False.
+     */
+    GetUser(id) {
+        return new Promise((resolve, reject) => {
+            try {
+                this._conection.all(`SELECT * FROM Usuario WHERE id = ${id}`, (error, result) => {
+                    if (!error) {
+                        let res = result;
+                        return res;
+                    }
+                    else {
+                        reject(error);
+                    }
+                });
+            }
+            catch (_error) {
+                throw new Usuario_error_1.default('Error DAO', `GET User error => ${_error}`);
             }
         });
     }

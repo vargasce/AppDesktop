@@ -25,7 +25,7 @@ class UsuarioService {
             const result = await this._usuario.AddUser( data );
             return result;
         }catch( _error ){
-            throw new UsuarioError('Error Service', `Error Add usuario : ${_error}`);
+            throw new UsuarioError('Error Service', `Error Add usuario => ${_error}`);
         }
 
     }
