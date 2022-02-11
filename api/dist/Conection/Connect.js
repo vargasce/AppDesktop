@@ -10,11 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
-const sqlite = require("sqlite3").verbose();
-//import sqlite from 'sqlite3';
 const path = require("path");
-//import * as fs from 'fs';
 const Connection_error_1 = require("../Error/Connection/Connection.error");
+const sqlite = require("sqlite3").verbose();
 let ConnectDB = class ConnectDB {
     constructor() {
         this._instace = null;
@@ -22,7 +20,6 @@ let ConnectDB = class ConnectDB {
     }
     getConection() {
         try {
-            console.log(this._dirPath);
             //if( fs.existsSync( this._dirPath )){
             if (true) {
                 this._instace = new sqlite.Database(this._dirPath, sqlite.OPEN_READWRITE, (error) => {

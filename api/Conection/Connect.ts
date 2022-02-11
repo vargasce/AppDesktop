@@ -1,11 +1,9 @@
 'use strict'
 
 import { Service } from 'typedi';
-const sqlite = require("sqlite3").verbose();
-//import sqlite from 'sqlite3';
 import * as path from 'path';
-//import * as fs from 'fs';
 import ConnectionError from '../Error/Connection/Connection.error';
+const sqlite = require("sqlite3").verbose();
 
 @Service()
 class ConnectDB{
@@ -19,7 +17,6 @@ class ConnectDB{
     public getConection():any{
 
         try{
-            console.log( this._dirPath );
             //if( fs.existsSync( this._dirPath )){
             if( true ){
                 this._instace = new sqlite.Database( this._dirPath, sqlite.OPEN_READWRITE, ( error )=>{

@@ -1,17 +1,17 @@
 'use strict'
 
-class ConnectionError extends Error {
+class UsuarioError extends Error {
     
     public name: string;
     public date: Date;
     public title: string;
 
-    constructor(title: string = 'Conection', ...params: any ) {
+    constructor(title: string = 'Usuario', ...params: any ) {
 
         super( ...params );
     
         if (Error.captureStackTrace) {
-          Error.captureStackTrace( this, ConnectionError )
+          Error.captureStackTrace( this, UsuarioError )
         }
     
         this.name = params;
@@ -21,4 +21,4 @@ class ConnectionError extends Error {
 
 }
 
-export default ConnectionError;
+export default UsuarioError;
