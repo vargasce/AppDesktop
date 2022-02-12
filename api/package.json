@@ -11,6 +11,7 @@
   "author": "Cristian Vargas",
   "license": "ISC",
   "dependencies": {
+    "@angular/cli": "^13.2.3",
     "body-parse": "^0.1.0",
     "connect-multiparty": "^2.2.0",
     "electron-reload": "^2.0.0-alpha.1",
