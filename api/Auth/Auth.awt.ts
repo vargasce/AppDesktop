@@ -1,7 +1,6 @@
 'use strict'
 
 import { Service } from 'typedi';
-import { Response, Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 import * as moment from 'moment';
 import Usuario from '../DTO//Usuario/Usuario.dto';
@@ -19,13 +18,13 @@ class AuthJWT{
     public CreatedToken ( usuario: Usuario ):UsuarioSession{
         let payload ={
             check: true,
-            obj:  { 'usuario': usuario.usuario, 'nom_ape': usuario.nombre +' '+usuario.apellido  },
+            obj:  { 'usuario': usuario.usuario, 'nom_ape': usuario.nombre +' '+usuario.apellido, 'email': usuario.email  },
             iat: moment().unix(),
             expiresIn : moment().add(1, 'year').unix()
         };
         
         const token = jwt.sign( payload, config.TOKEN_SECRET );
-        const user_aux = new UsuarioSession( payload.obj, token );
+        const user_aux = new UsuarioSession( payload.obj , token );
 
         return user_aux;
     }

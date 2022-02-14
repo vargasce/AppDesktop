@@ -3,15 +3,13 @@
 import { Service } from 'typedi';
 import * as path from 'path';
 import ConnectionError from '../Error/Connection/Connection.error';
-console.log("Hasta aca llego")
-//const sqlite = require("sqlite3").verbose();
-import * as sqlite from 'sqlite3';
+const sqlite = require("sqlite3").verbose();
 
 @Service()
 class ConnectDB{
 
     private _instace : any = null;
-    private _dirPath: string = path.resolve('../baseDB/base.db');
+    private _dirPath: string = path.join( __dirname, '../baseDB/base.db');
 
     constructor(){
     }
@@ -21,26 +19,25 @@ class ConnectDB{
         try{
             //if( fs.existsSync( this._dirPath )){
             if( true ){
-                //this._instace = new sqlite.Database( this._dirPath, sqlite.OPEN_READWRITE, ( error )=>{
-                console.log( this._dirPath );
+
                 try {
-                    this._instace = new sqlite.Database( "../../baseDB/base.db", sqlite.OPEN_READWRITE, ( error )=>{
+
+                    this._instace = new sqlite.Database( this._dirPath , sqlite.OPEN_READWRITE, ( error )=>{
                         if( error ){
-                            console.log(`Conexion Error : ${error}`);
+                            console.log(`[*]CONEXION DB ERROR => ${error}`);
                             return null;
                         }else{
-                            console.log( "Conexion Success!!!" );
+                            console.log( "[*]CONEXION DB SUCCESS !!!" );
                         } 
                     });                   
+
                 } catch (error) {
-                    console.log(this._dirPath);
-                    console.log(error);
+                    throw new ConnectionError( 'Error Conexion', `Error al realizar conexion con db : ${error}` );
                 }
 
             }
 
         }catch( exc ){
-            console.log( exc );
             throw new ConnectionError( 'Error Conexion', `Error al realizar conexion con db : ${exc}` );
         }
 
@@ -56,3 +53,4 @@ class ConnectDB{
 }
 
 export default ConnectDB;
+

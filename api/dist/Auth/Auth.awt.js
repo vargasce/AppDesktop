@@ -20,7 +20,7 @@ let AuthJWT = class AuthJWT {
     CreatedToken(usuario) {
         let payload = {
             check: true,
-            obj: { 'usuario': usuario.usuario, 'nom_ape': usuario.nombre + ' ' + usuario.apellido },
+            obj: { 'usuario': usuario.usuario, 'nom_ape': usuario.nombre + ' ' + usuario.apellido, 'email': usuario.email },
             iat: moment().unix(),
             expiresIn: moment().add(1, 'year').unix()
         };

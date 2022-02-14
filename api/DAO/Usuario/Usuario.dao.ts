@@ -65,7 +65,7 @@ class UsuarioDAO{
 export default UsuarioDAO;
 
 const createSqlStringAddUser = ( data: Usuario ) =>{
-    console.log(data);
+
     let sql = ` INSERT INTO Usuario ( nombre, apellido, usuario, pass, fecha_alta, activo, email, numero )
                 VALUES( '${data.nombre}',
                         '${data.apellido}',

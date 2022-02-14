@@ -23,13 +23,14 @@ let LoginDao = class LoginDao {
     SignIn(data) {
         return new Promise((resolve, reject) => {
             try {
-                this._conection.all(`SELECT * Usuario WHERE usuario= ${data.usuario}, pass= ${md5(data.pass)}`, (error, result) => {
+                let sql = `SELECT * FROM Usuario WHERE usuario= '${data.usuario}' AND pass= '${md5(data.pass)}';`;
+                this._conection.all(sql, (error, result) => {
                     if (!error) {
-                        if (result.length > 0) {
-                            return this._authjwt.CreatedToken(result);
+                        if (result.length == 1) {
+                            resolve(this._authjwt.CreatedToken(result[0]));
                         }
                         else {
-                            return null;
+                            resolve(null);
                         }
                     }
                     else {

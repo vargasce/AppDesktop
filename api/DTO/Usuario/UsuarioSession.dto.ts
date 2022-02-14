@@ -1,6 +1,7 @@
 type Usuario = {
     usuario: string;
     nom_ape: string;
+    email: string;
 }
 
 class UsuarioSession{

@@ -4,7 +4,7 @@ import ConnectionSqlite from '../../Conection/ConexionSqlite';
 import AuthJWT from '../../Auth/Auth.awt';
 import { Service } from 'typedi';
 import UsuarioError from '../../Error/Usuario/Usuario.error';
-import Login from '../../DTO/Login/Login.dto';
+import LoginDTO from '../../DTO/Login/Login.dto';
 import UsuarioSession from '../../DTO/Usuario/UsuarioSession.dto';
 
 import * as md5 from 'md5';
@@ -22,16 +22,19 @@ class LoginDao{
     }
 
 
-    public SignIn ( data: Login ):Promise<UsuarioSession>{
+    public SignIn ( data: LoginDTO ):Promise<UsuarioSession>{
         return new Promise( (resolve, reject) =>{
 
             try{
-                this._conection.all(`SELECT * Usuario WHERE usuario= ${data.usuario}, pass= ${md5(data.pass)}`, ( error: any, result: any) =>{
+    
+                let sql = `SELECT * FROM Usuario WHERE usuario= '${data.usuario}' AND pass= '${md5(data.pass)}';`;
+
+                this._conection.all( sql , ( error: any, result: any) =>{
                     if( !error ){
-                        if( result.length > 0 ){
-                            return this._authjwt.CreatedToken( result );       
+                        if( result.length == 1 ){
+                            resolve( this._authjwt.CreatedToken( result[0] ) );
                         }else{
-                            return null;
+                            resolve(null);
                         }
                     }else{
                         reject(error);
