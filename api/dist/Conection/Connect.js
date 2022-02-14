@@ -12,25 +12,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
 const path = require("path");
 const Connection_error_1 = require("../Error/Connection/Connection.error");
-const sqlite = require("sqlite3").verbose();
+console.log("Hasta aca llego");
+//const sqlite = require("sqlite3").verbose();
+const sqlite3_1 = require("sqlite3");
 let ConnectDB = class ConnectDB {
     constructor() {
         this._instace = null;
-        this._dirPath = path.join(__dirname, '../baseDB/base.db');
+        this._dirPath = path.resolve('../baseDB/base.db');
     }
     getConection() {
         try {
             //if( fs.existsSync( this._dirPath )){
             if (true) {
-                this._instace = new sqlite.Database(this._dirPath, sqlite.OPEN_READWRITE, (error) => {
-                    if (error) {
-                        console.log(`Conexion Error : ${error}`);
-                        return null;
-                    }
-                    else {
-                        console.log("Conexion Success!!!");
-                    }
-                });
+                //this._instace = new sqlite.Database( this._dirPath, sqlite.OPEN_READWRITE, ( error )=>{
+                console.log(this._dirPath);
+                try {
+                    this._instace = new sqlite3_1.default.Database("../../baseDB/base.db", sqlite3_1.default.OPEN_READWRITE, (error) => {
+                        if (error) {
+                            console.log(`Conexion Error : ${error}`);
+                            return null;
+                        }
+                        else {
+                            console.log("Conexion Success!!!");
+                        }
+                    });
+                }
+                catch (error) {
+                    console.log(this._dirPath);
+                    console.log(error);
+                }
             }
         }
         catch (exc) {

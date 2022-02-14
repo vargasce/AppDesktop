@@ -3,13 +3,15 @@
 import { Service } from 'typedi';
 import * as path from 'path';
 import ConnectionError from '../Error/Connection/Connection.error';
-const sqlite = require("sqlite3").verbose();
+console.log("Hasta aca llego")
+//const sqlite = require("sqlite3").verbose();
+import * as sqlite from 'sqlite3';
 
 @Service()
 class ConnectDB{
 
     private _instace : any = null;
-    private _dirPath: string = path.join( __dirname,'../baseDB/base.db');
+    private _dirPath: string = path.resolve('../baseDB/base.db');
 
     constructor(){
     }
@@ -19,14 +21,22 @@ class ConnectDB{
         try{
             //if( fs.existsSync( this._dirPath )){
             if( true ){
-                this._instace = new sqlite.Database( this._dirPath, sqlite.OPEN_READWRITE, ( error )=>{
-                    if( error ){
-                        console.log(`Conexion Error : ${error}`);
-                        return null;
-                    }else{
-                        console.log( "Conexion Success!!!" );
-                    } 
-                });
+                //this._instace = new sqlite.Database( this._dirPath, sqlite.OPEN_READWRITE, ( error )=>{
+                console.log( this._dirPath );
+                try {
+                    this._instace = new sqlite.Database( "../../baseDB/base.db", sqlite.OPEN_READWRITE, ( error )=>{
+                        if( error ){
+                            console.log(`Conexion Error : ${error}`);
+                            return null;
+                        }else{
+                            console.log( "Conexion Success!!!" );
+                        } 
+                    });                   
+                } catch (error) {
+                    console.log(this._dirPath);
+                    console.log(error);
+                }
+
             }
 
         }catch( exc ){
