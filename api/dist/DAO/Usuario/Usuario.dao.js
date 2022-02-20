@@ -16,7 +16,7 @@ const md5 = require("md5");
 let UsuarioDAO = class UsuarioDAO {
     constructor() {
         this._conection = null;
-        this._conection = ConexionSqlite_1.default.instace;
+        this._conection = ConexionSqlite_1.default.instance;
     }
     /** ADD USER
      * @Observations => Insertar nuevo usuario a la base.
@@ -28,6 +28,7 @@ let UsuarioDAO = class UsuarioDAO {
             try {
                 this._conection.all(createSqlStringAddUser(data), (error, result) => {
                     if (!error) {
+                        console.log(result);
                         resolve(true);
                     }
                     else {
@@ -65,7 +66,7 @@ let UsuarioDAO = class UsuarioDAO {
     }
 };
 UsuarioDAO = __decorate([
-    (0, typedi_1.Service)(),
+    typedi_1.Service(),
     __metadata("design:paramtypes", [])
 ], UsuarioDAO);
 exports.default = UsuarioDAO;

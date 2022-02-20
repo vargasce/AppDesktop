@@ -18,7 +18,7 @@ let LoginDao = class LoginDao {
     constructor(_authjwt) {
         this._authjwt = _authjwt;
         this._conection = null;
-        this._conection = ConexionSqlite_1.default.instace;
+        this._conection = ConexionSqlite_1.default.instance;
     }
     SignIn(data) {
         return new Promise((resolve, reject) => {
@@ -34,18 +34,18 @@ let LoginDao = class LoginDao {
                         }
                     }
                     else {
-                        reject(error);
+                        reject(new Usuario_error_1.default('Error Login', `Error SignIn DAO => ${error}`));
                     }
                 });
             }
             catch (_error) {
-                throw new Usuario_error_1.default('Error Login', `Error SignIn => ${_error}`);
+                throw new Usuario_error_1.default('Error Login', `Error SignIn DAO => ${_error}`);
             }
         });
     }
 };
 LoginDao = __decorate([
-    (0, typedi_1.Service)(),
+    typedi_1.Service(),
     __metadata("design:paramtypes", [Auth_awt_1.default])
 ], LoginDao);
 exports.default = LoginDao;

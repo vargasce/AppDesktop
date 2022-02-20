@@ -21,7 +21,7 @@ class LoginController{
     public async SignIn( data: LoginDTO ):Promise<UsuarioSession>{
         
         try{
-            let result = await this._loginService.SignUser( data );
+            let result: UsuarioSession = await this._loginService.SignUser( data );
             return Promise.resolve(result);
         }catch( _error ){
             throw new UsuarioError('Error SignIn controller', `${_error}`);
@@ -36,11 +36,14 @@ const login = new LoginController();
 const AuthLogin = async ( req: Request, res: Response, next: NextFunction ) =>{
 
     try{
+
         let data: LoginDTO = req.body;
         let result: UsuarioSession = await login.SignIn( data );
-        return res.status(200).send({ 'error' : '', 'ResultSet' : result });
+        return res.status(200).send( { 'error' : '', 'ResultSet' : result } );
+
     }catch( _error ){
-        return res.status(200).send({ 'error' : `Error Controller => ${_error}`, 'ResultSet' : '' });
+        console.log( _error );
+        return res.status(500).send({ 'error' : `Error Controller => ${_error}`, 'ResultSet' : '' });
     }
 
 }

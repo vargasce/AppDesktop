@@ -3,6 +3,7 @@ import { Service }      from 'typedi';
 import Usuario          from '../../DTO/Usuario/Usuario.dto';
 import UsuarioError     from '../../Error/Usuario/Usuario.error';
 import * as md5 from 'md5';
+import { Console } from 'console';
 
 @Service()
 class UsuarioDAO{
@@ -10,7 +11,7 @@ class UsuarioDAO{
     private _conection: any = null;
 
     constructor(){
-        this._conection = ConnectionSqlite.instace;
+        this._conection = ConnectionSqlite.instance;
     }
 
     /** ADD USER
@@ -24,6 +25,7 @@ class UsuarioDAO{
             try{
                 this._conection.all( createSqlStringAddUser( data ), ( error: any, result: any) =>{
                     if( !error ){
+                        console.log( result );
                         resolve(true);
                     }else{
                         reject(error);

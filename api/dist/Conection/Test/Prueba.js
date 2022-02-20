@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *                  ejecutar -> node Prueba.js
  */
 const ConexionSqlite_1 = require("../ConexionSqlite");
-let d = ConexionSqlite_1.default.instace;
+let d = ConexionSqlite_1.default.instance;
 console.log(d);
 d.all('SELECT * FROM Usuario ;', (error, result) => {
     console.log(result);

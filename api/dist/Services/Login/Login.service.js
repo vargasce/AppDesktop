@@ -43,7 +43,7 @@ let LoginService = class LoginService {
     }
 };
 LoginService = __decorate([
-    (0, typedi_1.Service)(),
+    typedi_1.Service(),
     __metadata("design:paramtypes", [Login_dao_1.default])
 ], LoginService);
 exports.default = LoginService;

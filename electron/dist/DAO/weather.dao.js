@@ -40,7 +40,6 @@ let WeatherRepository = class WeatherRepository {
                         });
                     });
                     request.on('finish', () => {
-                        console.log(`Finish`);
                     });
                     request.on('error', (error) => {
                         reject(error);

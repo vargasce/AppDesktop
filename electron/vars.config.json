@@ -1,3 +1,13 @@
 {
-    "token" : "c6d13d47482d8a41459027050fcaae06"
-}
+    "token" : "c6d13d47482d8a41459027050fcaae06",
+    "development" : {
+        "URL_ENDPOINT" : "http://localhost:3000/api/",
+        "HOST_NAME" : "127.0.0.1",
+        "PORT" : 3000,
+        "BASE" : "/api/"
+    },
+    "production" : {
+        "URL_ENDPOINT" : "http://localhost:3000/api/"
+    }
+
+} 

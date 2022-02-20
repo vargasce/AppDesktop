@@ -1,9 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
-import CoordenadasDTO from 'electron/DTO/WeatherDTO/coordenadas.dto';
 import WeatherResponseApiDTO from 'electron/DTO/WeatherDTO/weatherResponseApi.dto';
 import { WeatherForecastService } from './Service/weather-forecast.service';
 import * as io from 'socket.io-client';
+
 //import io from 'socket.io-client';
+//import CoordenadasDTO from 'electron/DTO/WeatherDTO/coordenadas.dto';
 
 @Component({
   selector: 'app-wheater-forecast',
@@ -14,13 +16,13 @@ import * as io from 'socket.io-client';
 export class WeatherForecastComponent implements OnInit {
 
   public data!: WeatherResponseApiDTO; 
-  private socket: io.Socket;
+  //private socket: io.Socket;
 
   constructor(
     private _weatherService : WeatherForecastService
   ) { 
     //this.socket = io.connect('http://localhost');
-    this.socket = io.connect(`http://localhost:${18488}`);
+    //this.socket = io.connect(`http://localhost:${18488}`);
   }
 
   ngOnInit(): void {
@@ -28,6 +30,20 @@ export class WeatherForecastComponent implements OnInit {
 
   ngAfterViewInit(){
     this.obtenerDatosClima();
+	  this.hacerLogin();
+  }
+
+  public async hacerLogin(){
+
+    try{
+      let datos = await this._weatherService.loginUser('login-auth', { usuario: 'prueba2', pass : '1234' });
+      let datosUser = await this._weatherService.AddUser('add-user', {id: '', nombre: 'test', apellido: 'test', usuario: 'test6', pass: 'test', fecha_alta: '', activo: true, email: 'email@gmail.com', numero: 113432432 });
+      console.log(datosUser);
+      console.log( datos );
+    }catch( _error ){
+		  console.log( _error );
+	  }
+
   }
 
   public async obtenerDatosClima (){
@@ -38,13 +54,6 @@ export class WeatherForecastComponent implements OnInit {
       console.log(error);
       return;
     }
-
-    let result = this.socket.connected;
-    console.log(result);
-    this.socket.on("test", ( msg : string )=>{
-      console.log(msg);
-      console.log('Prueba');
-    })
 
   }
 

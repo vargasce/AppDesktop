@@ -50,7 +50,7 @@ let ConnectDB = class ConnectDB {
     }
 };
 ConnectDB = __decorate([
-    (0, typedi_1.Service)(),
+    typedi_1.Service(),
     __metadata("design:paramtypes", [])
 ], ConnectDB);
 exports.default = ConnectDB;

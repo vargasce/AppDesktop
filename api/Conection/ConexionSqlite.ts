@@ -6,17 +6,17 @@ import ConectDB  from './Connect';
  */
 class ConnectionSqlite{
 
-    private static _instace : any = null;
+    private static _instance : any = null;
     private static _con : ConectDB = new ConectDB();
 
     constructor(){
     }
 
-    public static get instace():any{
-        if( this._instace == null ){
-            this._instace = this.getConnection();
+    public static get instance():any{
+        if( this._instance == null ){
+            this._instance = this.getConnection();
         }
-        return this._instace;
+        return this._instance;
     }
 
     private static getConnection():any{

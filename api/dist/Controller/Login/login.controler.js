@@ -37,7 +37,8 @@ const AuthLogin = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         return res.status(200).send({ 'error': '', 'ResultSet': result });
     }
     catch (_error) {
-        return res.status(200).send({ 'error': `Error Controller => ${_error}`, 'ResultSet': '' });
+        console.log(_error);
+        return res.status(500).send({ 'error': `Error Controller => ${_error}`, 'ResultSet': '' });
     }
 });
 exports.default = { AuthLogin };

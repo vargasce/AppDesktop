@@ -43,7 +43,7 @@ let UsuarioService = class UsuarioService {
     }
 };
 UsuarioService = __decorate([
-    (0, typedi_1.Service)(),
+    typedi_1.Service(),
     __metadata("design:paramtypes", [Usuario_dao_1.default])
 ], UsuarioService);
 exports.default = UsuarioService;

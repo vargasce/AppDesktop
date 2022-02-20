@@ -13,7 +13,7 @@ class WeatherService {
 
     }
 
-    async getWeatherTime():Promise<WeatherResponseApiDTO>{
+    public async getWeatherTime():Promise<WeatherResponseApiDTO>{
         let result = await this._weatherRepository.getStatusTime();
         return Promise.resolve( result );
     }

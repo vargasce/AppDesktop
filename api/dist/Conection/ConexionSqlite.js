@@ -7,17 +7,17 @@ const Connect_1 = require("./Connect");
 class ConnectionSqlite {
     constructor() {
     }
-    static get instace() {
-        if (this._instace == null) {
-            this._instace = this.getConnection();
+    static get instance() {
+        if (this._instance == null) {
+            this._instance = this.getConnection();
         }
-        return this._instace;
+        return this._instance;
     }
     static getConnection() {
         return this._con.getConection();
     }
 }
-ConnectionSqlite._instace = null;
+ConnectionSqlite._instance = null;
 ConnectionSqlite._con = new Connect_1.default();
 exports.default = ConnectionSqlite;
 //# sourceMappingURL=ConexionSqlite.js.map

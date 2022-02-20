@@ -3,7 +3,7 @@
  *                  ejecutar -> node Prueba.js
  */
 import ConnectionSqlite from "../ConexionSqlite";
-let d = ConnectionSqlite.instace; 
+let d = ConnectionSqlite.instance; 
 
 console.log(d);
 d.all('SELECT * FROM Usuario ;', ( error: any, result: any ) =>{

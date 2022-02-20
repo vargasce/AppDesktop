@@ -18,7 +18,7 @@ class LoginDao{
     constructor(
         private _authjwt: AuthJWT
     ){
-        this._conection = ConnectionSqlite.instace;
+        this._conection = ConnectionSqlite.instance;
     }
 
 
@@ -37,11 +37,11 @@ class LoginDao{
                             resolve(null);
                         }
                     }else{
-                        reject(error);
+                        reject( new UsuarioError('Error Login', `Error SignIn DAO => ${error}`) );
                     }
                 });
             }catch( _error ){
-                throw new UsuarioError('Error Login', `Error SignIn => ${_error}`);
+                throw new UsuarioError('Error Login', `Error SignIn DAO => ${_error}`);
             }
 
         });
