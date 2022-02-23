@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+.background_orange{
+    background: #f05837;
+}
+
+.background_black{
+    background: #282726;
+}
+
+.background_white{
+    background: #ffffff;
+}
+
+
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+

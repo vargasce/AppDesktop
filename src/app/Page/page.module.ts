@@ -8,12 +8,14 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { WeatherForecastComponent } from './wheater-forecast/wheater-forecast.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NgxElectronModule } from 'ngx-electron';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations : [
         DashboardComponent,
         WeatherForecastComponent,
-        WelcomeComponent
+        WelcomeComponent,
+        LoginComponent
     ],
     imports : [
         CommonModule,

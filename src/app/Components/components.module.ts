@@ -5,13 +5,17 @@ import { RouterModule } from '@angular/router';
 //COMPONENTS
 import { MenuHomeComponent } from './menu-home/menu-home.component';
 import { FooterComponent } from './footer/footer.component';
+import { ButtonSubmitComponent } from './button-submit/button-submit.component';
+import { InputComponent } from './input/input.component';
 
 
 
 @NgModule({
 	declarations : [
         MenuHomeComponent,
-        FooterComponent
+        FooterComponent,
+        ButtonSubmitComponent,
+        InputComponent
 	],
 	imports : [
 		CommonModule,
@@ -19,7 +23,9 @@ import { FooterComponent } from './footer/footer.component';
 	],
 	exports : [
         MenuHomeComponent,
-		FooterComponent
+		FooterComponent,
+		ButtonSubmitComponent,
+		InputComponent
 	],
 	schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
