@@ -19,7 +19,7 @@ class UsuarioService {
      * @param { UsuarioDTO } data => Datos de nuevo usuario.
      * @return { Promise<UsuarioDTO> } 
      */
-    public async AddUser( data: UsuarioDTO ):Promise<UsuarioDTO>{
+    public async AddUser( data: UsuarioDTO ):Promise<any>{
         
         try {
             let result = await this._usuarioDAO.AddUser( data );

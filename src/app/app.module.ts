@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PageModule } from './Page/page.module';
 import { CommonModule } from "@angular/common";
 import { NgxElectronModule } from 'ngx-electron';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NgxElectronModule } from 'ngx-electron';
     AppRoutingModule,
     CommonModule,
     PageModule.forRoot(),
-    NgxElectronModule
+    NgxElectronModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

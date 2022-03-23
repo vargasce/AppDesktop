@@ -1,107 +1,112 @@
 
-<div class="container">
+    <div class="container">
 
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="searchCiudad" placeholder="Insert ciudad" aria-label="Insert ciudad" aria-describedby="Insert ciudad">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" (click)="SearchCity($event)">Buscar</button>
+        <div class="row mt-2">
+            <div class="col-sm-12">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="searchCiudad" placeholder="Insert ciudad" aria-label="Insert ciudad" aria-describedby="Insert ciudad">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="SearchCity($event)">Buscar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="cards" *ngIf="data">
+        <div class="container-scroll">
 
-        <div class="row">
-            <div class="col-md-6">
+            <div class="cards" *ngIf="data">
 
-                <div class="card">
-                    <div class="card-header">
-                        General
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="card">
+                            <div class="card-header">
+                                General
+                            </div>
+                            <div class="card-body">
+                                <p>Id : {{data.id}}</p>
+                                <p>Name : {{data.name}}</p>
+                                <p>Code : {{data.cod}}</p>
+                                <p>Visibility : {{data.visibility}} Meter, {{ConvertMeterToKm(data.visibility)}} KM</p>
+                                <p>Base : {{data.base}}</p>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="card-body">
-                        <p>Id : {{data.id}}</p>
-                        <p>Name : {{data.name}}</p>
-                        <p>Code : {{data.cod}}</p>
-                        <p>Visibility : {{data.visibility}} Meter, {{ConvertMeterToKm(data.visibility)}} KM</p>
-                        <p>Base : {{data.base}}</p>
-                    </div>
-                    <div class="card-footer">
-                    </div>
-                </div>
+                    <div class="col-md-6">
 
-            </div>
-            <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Coord y Weather
+                            </div>
+                            <div class="card-body">
+                                <p>Lon : {{data.coord.lon}}</p>
+                                <p>Lat : {{data.coord.lat}}</p>
+                                <p>Id : {{data.weather[0].id}}</p>
+                                <p>Main : {{data.weather[0].main}}</p>
+                                <p>Description : {{data.weather[0].description}}</p>
+                                <p>Icon : {{data.weather[0].icon}}</p>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        Coord y Weather
-                    </div>
-                    <div class="card-body">
-                        <p>Lon : {{data.coord.lon}}</p>
-                        <p>Lat : {{data.coord.lat}}</p>
-                        <p>Id : {{data.weather[0].id}}</p>
-                        <p>Main : {{data.weather[0].main}}</p>
-                        <p>Description : {{data.weather[0].description}}</p>
-                        <p>Icon : {{data.weather[0].icon}}</p>
-                    </div>
-                    <div class="card-footer">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div> <!-- END CARDS -->
-
-
-    <div class="cards" *ngIf="data" >
-
-        <div class="row">
-            <div class="col-md-6">
-
-                <div class="card">
-                    <div class="card-header">
-                        Main y Wind
-                    </div>
-                    <div class="card-body">
-                        <p>Temp : {{ ConvertTmp(data.main.temp) }} c</p>
-                        <p>Feels Like: {{ ConvertTmp(data.main.feels_like) }} c</p>
-                        <p>Temp Min : {{ ConvertTmp(data.main.temp_min) }} c</p>
-                        <p>Temp Max : {{ ConvertTmp(data.main.temp_max) }} c</p>
-                        <p>Pressure : {{ data.main.pressure }}</p>
-                        <p>Humidity : {{ data.main.humidity }}</p>
-                        <p>Speed : {{ data.wind.speed }} KM/h</p>
-                        <p>Deg : {{ data.wind.deg }}</p>
-                    </div>
-                    <div class="card-footer">
                     </div>
                 </div>
 
-            </div>
-            <div class="col-md-6">
+            </div> <!-- END CARDS -->
 
-                <div class="card">
-                    <div class="card-header">
-                        Sys
+
+            <div class="cards" *ngIf="data" >
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="card">
+                            <div class="card-header">
+                                Main y Wind
+                            </div>
+                            <div class="card-body">
+                                <p>Temp : {{ ConvertTmp(data.main.temp) }} c</p>
+                                <p>Feels Like: {{ ConvertTmp(data.main.feels_like) }} c</p>
+                                <p>Temp Min : {{ ConvertTmp(data.main.temp_min) }} c</p>
+                                <p>Temp Max : {{ ConvertTmp(data.main.temp_max) }} c</p>
+                                <p>Pressure : {{ data.main.pressure }}</p>
+                                <p>Humidity : {{ data.main.humidity }}</p>
+                                <p>Speed : {{ data.wind.speed }} KM/h</p>
+                                <p>Deg : {{ data.wind.deg }}</p>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="card-body">
-                        <p>Id : {{ data.sys.id }}</p>
-                        <p>Type : {{ data.sys.type }}</p>
-                        <p>Country : {{ data.sys.country }}</p>
-                        <p>Sunrise : {{ data.sys.sunrise }}</p>
-                        <p>Sunset : {{ data.sys.sunset }}</p>
-                    </div>
-                    <div class="card-footer">
+                    <div class="col-md-6">
+
+                        <div class="card">
+                            <div class="card-header">
+                                Sys
+                            </div>
+                            <div class="card-body">
+                                <p>Id : {{ data.sys.id }}</p>
+                                <p>Type : {{ data.sys.type }}</p>
+                                <p>Country : {{ data.sys.country }}</p>
+                                <p>Sunrise : {{ data.sys.sunrise }}</p>
+                                <p>Sunset : {{ data.sys.sunset }}</p>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-            </div>
-        </div>
+            </div> <!-- END CARDS -->
 
-    </div> <!-- END CARDS -->
+        </div><!-- END CONTAINER SCROLL -->
 
 
-</div> <!-- END CONTAINER -->
+    </div> <!-- END CONTAINER -->
+

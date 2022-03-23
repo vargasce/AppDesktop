@@ -28,11 +28,10 @@ let UsuarioDAO = class UsuarioDAO {
             try {
                 this._conection.all(createSqlStringAddUser(data), (error, result) => {
                     if (!error) {
-                        console.log(result);
                         resolve(true);
                     }
                     else {
-                        reject(error);
+                        reject(false);
                     }
                 });
             }
@@ -82,6 +81,7 @@ const createSqlStringAddUser = (data) => {
                         '${data.numero}'
                 );
 `;
+    console.log(sql);
     return sql;
 };
 //# sourceMappingURL=Usuario.dao.js.map

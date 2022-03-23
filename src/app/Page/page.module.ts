@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { PagesRoutingModule } from "./page.routing";
 import { ComponentsModule } from "../Components/components.module";
@@ -9,13 +9,17 @@ import { WeatherForecastComponent } from './wheater-forecast/wheater-forecast.co
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NgxElectronModule } from 'ngx-electron';
 import { LoginComponent } from './login/login.component';
+import { CardComponent } from './welcome/Components/card/card.component';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
     declarations : [
         DashboardComponent,
         WeatherForecastComponent,
         WelcomeComponent,
-        LoginComponent
+        LoginComponent,
+        CardComponent,
+        TaskComponent
     ],
     imports : [
         CommonModule,
@@ -24,7 +28,8 @@ import { LoginComponent } from './login/login.component';
         PagesRoutingModule,
         ComponentsModule.forRoot(),
         ComponentsModule,
-        NgxElectronModule
+        NgxElectronModule,
+        ReactiveFormsModule
     ],
     schemas : [
         CUSTOM_ELEMENTS_SCHEMA

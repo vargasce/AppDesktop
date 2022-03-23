@@ -29,10 +29,8 @@ export class ButtonSubmitComponent implements OnInit {
     }
 
     public OnClick( event: any ){
-        console.log('on click');
         this.OnClickEvent.emit( event );
     }
-
 
     private setStyle(){
 

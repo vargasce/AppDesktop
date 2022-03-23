@@ -27,11 +27,11 @@ class UsuarioDAO {
      * @param { any } data => datos de nuevo usuario.
      * @returns { Promise<any> }
      */
-    public async AddUser( data: UsuarioDTO ):Promise<UsuarioDTO>{
+    public async AddUser( data: UsuarioDTO ):Promise<any>{
 
         try {
             
-            let result : UsuarioDTO = await this._httpClient.request<UsuarioDTO>( this.options, data, 'Usuario/NewUser');
+            let result : any = await this._httpClient.request<UsuarioDTO>( this.options, data, 'Usuario/NewUser');
             return Promise.resolve( result );
 
         } catch ( _error ) {

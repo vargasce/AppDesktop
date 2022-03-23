@@ -7,6 +7,7 @@ const routes: Routes = [
   { path : '', component : DashboardComponent, children : [
     { path : '', component : WelcomeComponent },
     { path : 'weatherforecast', loadChildren : () => import('../wheater-forecast/weather-forecast.module').then( referenceModule => referenceModule.WeatherForecastModule ) },
+    { path : 'tasks', loadChildren : () => import('../task/task.module').then( referenceModule => referenceModule.TaskModule ) }
   ]},
 ];
  

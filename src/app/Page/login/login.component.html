@@ -3,26 +3,31 @@
         <div class="col-md-6 login-form-1 background_black">
             <h3>Ingresar</h3>
 
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Email *" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Your Password *" value="" />
-                </div>
 
-                <app-button-submit
-                    [backgroundColor]="'white'"
-                    [color]="'black'"
-                    [width]="'medium'"
-                    [text]="'Login'"
-                    [align]="'left'"
-                    (OnClickEvent)="OnLogin($event)"
-                ></app-button-submit>
+                <form name ="loginDataForm"  #loginDataForm="ngForm"  class="mt-4" [formGroup]="loginFormGroup">
 
-                <div class="form-group">
-                    <a href="#" class="btnForgetPwd">Forget Password?</a>
-                </div>
-            
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Email *" value="" #usuarioform name="usuario" [(ngModel)]="loginData.usuario" formControlName="usuario" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Your Password *" value="" #pass name="pass" [(ngModel)]="loginData.pass" formControlName="pass" />
+                    </div>
+
+                    <app-button-submit
+                        [backgroundColor]="'white'"
+                        [color]="'black'"
+                        [width]="'medium'"
+                        [text]="'Login'"
+                        [align]="'left'"
+                        (OnClickEvent)="OnLogin($event)"
+                    ></app-button-submit>
+
+                    <div class="form-group">
+                        <a href="#" class="btnForgetPwd">Forget Password?</a>
+                    </div>
+                
+                </form>
         </div>
 
         <div class="col-md-6 login-form-2 background_orange">
@@ -33,27 +38,28 @@
 
             <h3>Registrarse</h3>
 
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Email *" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Your Password *" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Repet Your Password *" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name User *" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name *" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Phone *" value="" />
-                </div>
+                <form name ="usuarioDataForm"  #usuarioDataForm="ngForm"  class="mt-4" [formGroup]="usuarioFormGroup">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Email *" value="" name="email" [(ngModel)]="usuarioData.email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Your Password *" value="" name="pass" [(ngModel)]="usuarioData.pass" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name User *" value="" name="usuario" [(ngModel)]="usuarioData.usuario" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name *" value="" name="nombre" [(ngModel)]="usuarioData.nombre" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name *" value="" name="apellido" [(ngModel)]="usuarioData.apellido" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone *" value="" name="numero" [(ngModel)]="usuarioData.numero" />
+                    </div>
+
+                </form>
 
                 <app-button-submit
                     [backgroundColor]="'white'"
@@ -64,8 +70,6 @@
                     (OnClickEvent)="OnRegister($event)"
                 ></app-button-submit>
 
-                <div class="form-group">
-                </div>
         </div>
 
     </div> <!-- END ROW -->

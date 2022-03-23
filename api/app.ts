@@ -4,6 +4,7 @@ import * as bodyParser from 'body-parser';
 import * as multiparty from 'connect-multiparty';
 import router from './Routes/Routes';
 import routerUser from './Routes/Usuario/routesuser';
+import routerTasks from './Routes/Task/routestasks';
 
 const express = require('express');
 const app = express();
@@ -30,6 +31,7 @@ console.log('[*]CONFIGURACION MIDDLEWARE');
 console.log('[*]CONFIGURACION ROUTES');
 app.use('/api/Auth', router );
 app.use('/api/Usuario', routerUser );
+app.use('/api/Task', routerTasks );
 
 
 module.exports = app;

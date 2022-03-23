@@ -12,10 +12,12 @@ process.env.SOCKET_PORT = "18488";
 //https://openweathermap.org/current
 function createWindow() {
     win = new electron_1.BrowserWindow({
-        width: 1600,
-        height: 1250,
-        minWidth: 1150,
-        minHeight: 1000,
+        //width: 1600, 
+        //height: 1250,
+        width: 1400,
+        height: 900,
+        //minWidth: 1250,
+        //minHeight: 900,
         show: false,
         webPreferences: {
             nodeIntegration: true,
@@ -48,7 +50,7 @@ const configMenuApp = (win) => {
     win.setMenu(menuPview);
     //win.maximize();
     win.show();
-    win.setResizable(true);
+    win.setResizable(false);
 };
 const templateMenu = () => {
     let menuPrincipal = [

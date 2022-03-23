@@ -30,20 +30,6 @@ export class WeatherForecastComponent implements OnInit {
 
   ngAfterViewInit(){
     this.obtenerDatosClima();
-	  this.hacerLogin();
-  }
-
-  public async hacerLogin(){
-
-    try{
-      let datos = await this._weatherService.loginUser('login-auth', { usuario: 'prueba2', pass : '1234' });
-      let datosUser = await this._weatherService.AddUser('add-user', {id: '', nombre: 'test', apellido: 'test', usuario: 'test6', pass: 'test', fecha_alta: '', activo: true, email: 'email@gmail.com', numero: 113432432 });
-      console.log(datosUser);
-      console.log( datos );
-    }catch( _error ){
-		  console.log( _error );
-	  }
-
   }
 
   public async obtenerDatosClima (){

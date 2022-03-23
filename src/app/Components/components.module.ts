@@ -7,6 +7,7 @@ import { MenuHomeComponent } from './menu-home/menu-home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonSubmitComponent } from './button-submit/button-submit.component';
 import { InputComponent } from './input/input.component';
+import { TitleComponent } from './title/title.component';
 
 
 
@@ -15,7 +16,8 @@ import { InputComponent } from './input/input.component';
         MenuHomeComponent,
         FooterComponent,
         ButtonSubmitComponent,
-        InputComponent
+        InputComponent,
+        TitleComponent
 	],
 	imports : [
 		CommonModule,
@@ -25,7 +27,8 @@ import { InputComponent } from './input/input.component';
         MenuHomeComponent,
 		FooterComponent,
 		ButtonSubmitComponent,
-		InputComponent
+		InputComponent,
+		TitleComponent
 	],
 	schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
