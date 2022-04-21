@@ -79,9 +79,7 @@ const createSqlStringAddUser = (data) => {
                         ${data.activo},
                         '${data.email}',
                         '${data.numero}'
-                );
-`;
-    console.log(sql);
+                );`;
     return sql;
 };
 //# sourceMappingURL=Usuario.dao.js.map

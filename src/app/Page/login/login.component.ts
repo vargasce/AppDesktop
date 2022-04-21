@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './Service/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { SessionStoreService } from '../../Core/Service/Session/session-store.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private route_navigate: Router,
     private fb: FormBuilder,
     private _loginService: LoginService,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private _storeService: SessionStoreService
   ) { 
     this.loginData = new LoginModel('','');
     this.usuarioData = new UsuarioModel('','','','','','',true,'',0);
@@ -70,9 +72,17 @@ export class LoginComponent implements OnInit {
   private async LoginAuth(){
 
     try {
+
         let result = await this._loginService.LoginUser( this.loginData );       
-        if( result ) this.route_navigate.navigate(['/dashboard']);
-        this._toastr.error('Error ingresando usuario y/o contrasena','Error Login');
+
+        if( result ){
+            this._toastr.success('','Session iniciada con exito!!');
+            this._storeService.guardarSession( result );
+            this.route_navigate.navigate(['/dashboard']);
+        }else{
+            this._toastr.error('Comunicarse con soporte del sistema.','Algo salio mal !!!');           
+        }
+
     } catch ( _error ) {
         this._toastr.error('Error en la conexion','Error Login Server');
     }
